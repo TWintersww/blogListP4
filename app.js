@@ -1,4 +1,5 @@
 const express = require('express')
+require('express-async-errors')
 const blogsRouter = require('./controllers/blogs')
 const cors = require('cors')
 const logger = require('./utils/logger')
@@ -8,9 +9,12 @@ const mongoose = require('mongoose')
 
 mongoose.set('strictQuery', false)
 logger.info('Connecting to MDB')
+
+
 mongoose.connect(config.MONGODB_URL)
     .then(response => {
         logger.info('Successful connection')
+        // console.log(config.MONGODB_URL)
     })
     .catch(error => {
         logger.error('Connection failed:', error.message)

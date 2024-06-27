@@ -1,9 +1,15 @@
 const info = (...args) => {
-    console.log(...args)
+    if (process.env.NODE_ENV !== 'test') {
+        console.log(...args)
+
+    }
 }
 
 const error = (...args) => {
-    console.error(...error)
+    if (process.env.NODE_ENV !== 'test') {
+        console.error(...error)
+
+    }
 }
 
 module.exports = {
